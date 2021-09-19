@@ -1,4 +1,3 @@
-const citiesArr = ["Hamilton, ON", "Toronto, ON", "Waterloo, ON"]
 const locationTextBox = document.getElementById("location-textbox");
 const autocompleteBox = document.getElementById("autocomplete-box");
 const searchIconBox = document.getElementById("search-icon-container");
@@ -7,13 +6,13 @@ const homeSpan = document.getElementById("median-home");
 const rentSpan = document.getElementById("median-rent");
 const rentBuySpan = document.getElementById("rent-buy");
 const locationSpan = document.getElementById("city-province");
-let response;
-let province = "";
-let city = "";
-let medianHomePrice;
-let medianRentPrice;
-let priceRentRatio;
+let response, province, city, medianHomePrice, medianRentPrice, priceRentRatio;
 
+const cityLinks = document.getElementsByClassName("city");
+for (let city of cityLinks)
+    city.addEventListener('click', sendCall)
+
+// Code for the autocomplete box and its functionality (which cities to show, etc)
 locationTextBox.addEventListener('click', () => {
     autocompleteBox.style.height = "150px";
     locationTextBox.style.borderRadius = "5px 5px 0px 0px";
@@ -38,6 +37,7 @@ locationTextBox.addEventListener('keyup', (e) => {
     }
 })
 
+// When a city link is pressed, call the API using info from the element, then create the result and display the modal
 async function sendCall(e) {
     let cityProvince = e.target.innerText.split(", ");
     let provinceString = cityProvince[1].toLowerCase();
@@ -62,6 +62,7 @@ function openCloseModal() {
     }
 }
 
+// Fill the elements within the analysis modal using the API data
 function fillModal() {
     homeSpan.innerText = `$${medianHomePrice}`;
     rentSpan.innerText = `$${medianRentPrice}`;
@@ -69,10 +70,7 @@ function fillModal() {
     locationSpan.innerText = `${city}, ${province.toUpperCase()}`
 }
 
+// Calculates the buy/rent decision based on the ratio
 function getDecision() {
     //TODO
 }
-
-const cityLinks = document.getElementsByClassName("city");
-for (let city of cityLinks)
-    city.addEventListener('click', sendCall)
