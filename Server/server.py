@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Response
 from statistics import median
-from Scraping.realtorRates import RealtorPrice
-from Scraping.rentCanadaRates import RentcanadaPrice
+from Scraping.buyRates import RewPrice
+from Scraping.rentRates import RentcanadaPrice
 
 app = FastAPI()
 
@@ -13,7 +13,7 @@ def read_root():
 
 @app.get("/{city}/{province}")
 def read_location(city: str, province: str):
-    median_price = median(RealtorPrice(city, province))
+    median_price = median(RewPrice(city, province))
     median_rent = median(RentcanadaPrice(city, province))
     ratio = median_price/median_rent
     result = {
