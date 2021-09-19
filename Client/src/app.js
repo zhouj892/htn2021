@@ -3,6 +3,10 @@ const locationTextBox = document.getElementById("location-textbox");
 const autocompleteBox = document.getElementById("autocomplete-box");
 const searchIconBox = document.getElementById("search-icon-container");
 const analysisModal = document.getElementById("analysis-modal");
+const homeSpan = document.getElementById("median-home");
+const rentSpan = document.getElementById("median-rent");
+const rentBuySpan = document.getElementById("rent-buy");
+const locationSpan = document.getElementById("city-province");
 let response;
 let province = "";
 let city = "";
@@ -44,14 +48,31 @@ async function sendCall(e) {
     medianHomePrice = response.data["Median Home Price"];
     medianRentPrice = response.data["Median Rent Price"];
     priceRentRatio = response.data["Price Rent Ratio"];
+    fillModal();
+    openCloseModal();
 }
 
 document.getElementById("modal-open-close-btn").addEventListener('click', openCloseModal)
 
 function openCloseModal() {
-    if (analysisModal.style.height == "80%" || analysisModal.style.height == "" ) {
+    if (analysisModal.style.height == "80%") {
         analysisModal.style.height = "0%";
     } else {
         analysisModal.style.height = "80%";
     }
 }
+
+function fillModal() {
+    homeSpan.innerText = `$${medianHomePrice}`;
+    rentSpan.innerText = `$${medianRentPrice}`;
+    rentBuySpan.innerText = getDecision();
+    locationSpan.innerText = `${city}, ${province.toUpperCase()}`
+}
+
+function getDecision() {
+    //TODO
+}
+
+const cityLinks = document.getElementsByClassName("city");
+for (let city of cityLinks)
+    city.addEventListener('click', sendCall)
