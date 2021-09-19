@@ -1,9 +1,17 @@
 from fastapi import FastAPI, Response
+from fastapi.middleware.cors import CORSMiddleware
 from statistics import median
 from Scraping.buyRates import RewPrice
 from Scraping.rentRates import RentcanadaPrice
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
