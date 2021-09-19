@@ -4,9 +4,10 @@ const searchIconBox = document.getElementById("search-icon-container");
 const analysisModal = document.getElementById("analysis-modal");
 const homeSpan = document.getElementById("median-home");
 const rentSpan = document.getElementById("median-rent");
-const rentBuyLevelSpan = document.getElementById("rent-buy-level")
+const rentBuyLevelSpan = document.getElementById("rent-buy-level");
 const rentBuySpan = document.getElementById("rent-buy");
 const locationSpan = document.getElementById("city-province");
+const loadingIcon = document.getElementById("loading-icon");
 let response, province, city, medianHomePrice, medianRentPrice, priceRentRatio;
 
 const cityLinks = document.getElementsByClassName("city");
@@ -43,6 +44,7 @@ locationTextBox.addEventListener("keyup", (e) => {
 
 // When a city link is pressed, call the API using info from the element, then create the result and display the modal
 async function sendCall(e) {
+    showLoading();
     locationTextBox.value = e.target.innerText;
     let cityProvince = e.target.innerText.split(", ");
     let provinceString = cityProvince[1].toLowerCase();
@@ -56,6 +58,8 @@ async function sendCall(e) {
     medianRentPrice = response.data["Median Rent Price"];
     priceRentRatio = response.data["Price Rent Ratio"];
     fillModal();
+    // Stops the loading function if still running
+    loadingIcon.style.display = "none";
     openCloseModal();
 }
 
@@ -78,14 +82,23 @@ function fillModal() {
     let decisionObject = getDecision();
     rentBuyLevelSpan.innerText = decisionObject.level;
     rentBuySpan.innerText = decisionObject.decision;
-    locationSpan.innerText = `${city.replace("-", " ")}, ${province.toUpperCase()}`;
+    locationSpan.innerText = `${city.replace(
+        "-",
+        " "
+    )}, ${province.toUpperCase()}`;
 }
 
 // Calculates the buy/rent decision based on the ratio
 function getDecision() {
-    if (priceRentRatio < 16)
-        return {decision: "BUY", level: "much"}
+    if (priceRentRatio < 16) return { decision: "BUY", level: "much" };
     else if (priceRentRatio < 21)
-        return {decision: "RENT", level: "typically"}
-    else return {decision: "RENT", level: "much"}
+        return { decision: "RENT", level: "typically" };
+    else return { decision: "RENT", level: "much" };
+}
+
+function showLoading() {
+    loadingIcon.style.display = "block";
+    setTimeout(() => {
+        loadingIcon.style.display = "none";
+    }, 10000);
 }

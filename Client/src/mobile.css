@@ -36,4 +36,8 @@
     #prices-row > div:nth-of-type(2) {
         color:transparent;
     }
+
+    #decision-area p {
+        margin: 0px 15px;
+    }
 }

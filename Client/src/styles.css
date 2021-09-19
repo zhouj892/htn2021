@@ -35,7 +35,8 @@ nav {
     display: flex;
     justify-content: center;
     color: #e7e7f3;
-    box-shadow: 0px 0px 2px 2px #b7b7b7;
+    box-shadow: 0px 0px 5px 2px #c4c0dd;
+    background: linear-gradient(var(--accent), #585866);
 }
 
 nav li {
@@ -212,7 +213,7 @@ footer a:hover {
         rgba(242, 242, 248, 0.86) 54.69%,
         rgba(242, 242, 248, 0) 92.19%
     );
-    background-color: rgba(255, 255, 255, 0.27);
+    background-color: rgba(255, 255, 255, 0.5);
     display: grid;
     grid-template-rows: 100px 1fr;
     max-width: 550px;
@@ -256,4 +257,25 @@ footer a:hover {
 #rent-buy {
     font-size: 17px;
     font-weight: bold;
+}
+
+#loading-container {
+    position: relative;
+    top: -85px;
+    height: 0px;
+}
+
+#loading-icon {
+    color:#7c7c88;
+    animation: spin 1s infinite linear;
+    display: none;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }
