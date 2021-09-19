@@ -2,6 +2,7 @@ const citiesArr = ["Hamilton, ON", "Toronto, ON", "Waterloo, ON"]
 const locationTextBox = document.getElementById("location-textbox");
 const autocompleteBox = document.getElementById("autocomplete-box");
 const searchIconBox = document.getElementById("search-icon-container");
+const analysisModal = document.getElementById("analysis-modal");
 let response;
 let province = "";
 let city = "";
@@ -43,4 +44,14 @@ async function sendCall(e) {
     medianHomePrice = response.data["Median Home Price"];
     medianRentPrice = response.data["Median Rent Price"];
     priceRentRatio = response.data["Price Rent Ratio"];
+}
+
+document.getElementById("modal-open-close-btn").addEventListener('click', openCloseModal)
+
+function openCloseModal() {
+    if (analysisModal.style.height == "80%" || analysisModal.style.height == "" ) {
+        analysisModal.style.height = "0%";
+    } else {
+        analysisModal.style.height = "80%";
+    }
 }
