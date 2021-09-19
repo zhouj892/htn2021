@@ -15,7 +15,7 @@ def read_root():
 def read_location(city: str, province: str):
     median_price = median(RewPrice(city, province))
     median_rent = median(RentcanadaPrice(city, province))
-    ratio = median_price/median_rent
+    ratio = median_price/(median_rent * 12)
     result = {
         "Province": province.title(),
         "City": city.title(),
