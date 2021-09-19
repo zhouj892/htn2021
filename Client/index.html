@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hack the North</title>
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+            integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="src/styles.css" />
+    </head>
+    <body>
+        <nav>
+            <div id="nav-container">
+                <div>
+                    <p>Untitled Project</p>
+                </div>
+                <ul>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="content">
+            <img src="src/images/main-page-img.svg" />
+            <div id="search-section">
+                <div id="search-icon-container">
+                    <i class="fas fa-search"></i>
+                </div>
+                <input
+                    type="text"
+                    id="location-textbox"
+                    placeholder="Enter a location..."
+                />
+            </div>
+            <div id="autocomplete-container">
+                <div id="autocomplete-box"></div>
+            </div>
+            <hr />
+            <div id="cities-section">
+                <a href="#" target="_blank">Toronto</a>
+                <a href="#" target="_blank">Montreal</a>
+                <a href="#" target="_blank">Vancouver</a>
+                <a href="#" target="_blank">Calgary</a>
+                <a href="#" target="_blank">Edmonton</a>
+                <a href="#" target="_blank">Ottawa</a>
+                <a href="#" target="_blank">Winnipeg</a>
+                <a href="#" target="_blank">Quebec City</a>
+                <a href="#" target="_blank">Hamilton</a>
+                <a href="#" target="_blank">Kitchener</a>
+                <a href="#" target="_blank">London</a>
+                <a href="#" target="_blank">Victoria</a>
+            </div>
+        </div>
+        <footer>
+            <p>
+                Made by <a href="#" target="_blank">Lina Zhou</a>,
+                <a href="#" target="_blank">Lucas Wang</a>, and
+                <a href="#" target="_blank">Ryan Hull</a> for
+                <a href="#" target="_blank">Hack the North</a>
+            </p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="src/cities.js"></script>
+        <script src="src/app.js"></script>
+    </body>
+</html>

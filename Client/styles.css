@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --accent: #3C3C4A;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    background: linear-gradient(180deg, #FAFAFF 0%, #FFFFFF 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family:Poppins, sans-serif;
+    color:var(--accent);
+    height:100vh;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items:center;
+}
+
+nav, footer {
+    width:100%;
+    height:50px;
+    background-color:var(--accent);
+    font-size:14px;
+}
+
+nav {
+    display:flex;
+    justify-content:center;
+    color:#E7E7F3;
+}
+
+nav li {
+    list-style:none;
+}
+
+nav a {
+    color:#E7E7F3;
+    text-decoration: none;
+}
+
+#nav-container {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    height:50px;
+    width:75%;
+    max-width:1440px;
+}
+
+#content {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    padding: 25px 0px;
+    width: 75vw;
+}
+
+#content img {
+    width:20%;
+    margin-bottom:25px;
+}
+
+#search-section {
+    display:flex;
+}
+
+#search-icon-container, #location-textbox {
+    background-color:#F2F2F8;
+    border:none;
+    outline:none;
+    padding: 5px 10px;
+}
+
+#search-icon-container {
+    border-radius: 5px 0px 0px 5px;
+    padding-right: 0px;
+    color:#82828D;
+}
+
+#location-textbox {
+    border-radius:0px 5px 5px 0px;
+    color:var(--accent);
+    font-family:Poppins, sans-serif;
+    font-size:15px;
+    width:200px;
+}
+
+#autocomplete-container {
+    height: 150px;
+}
+
+#autocomplete-box {
+    position:relative;
+    z-index:99;
+    height:0px;
+    width:226px;
+    background-color:#F2F2F8;
+    border-radius:0px 0px 5px 5px;
+    overflow:hidden;
+    transition: height 0.2s;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+#autocomplete-box a {
+    margin-left: 36px;
+    font-size: 14px;
+    color:grey;
+    text-decoration:none;
+}
+
+#autocomplete-box a:hover {
+    color:var(--accent);
+}
+
+#content hr {
+    width: 50%;
+    margin:25px 0px;
+    color: #EFEFF7;
+    border: solid 2px;
+}
+
+#cities-section {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    width:50%;
+    overflow:hidden;
+    text-align:center;
+    width: 75%;
+    overflow: hidden;
+    text-align: center;
+    gap: 15px;
+}
+
+#cities-section a {
+    color:var(--accent);
+    text-decoration: none;
+}
+
+#cities-section a:hover {
+    font-weight:bold;
+}
+
+footer {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    color:#CACAD2;
+}
+
+footer a {
+    color:#E7E7F3;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color:#ffffff;
+    text-decoration:underline;
+}
