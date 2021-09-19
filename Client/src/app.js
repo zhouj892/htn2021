@@ -1,6 +1,7 @@
 const locationTextBox = document.getElementById("location-textbox");
 const autocompleteBox = document.getElementById("autocomplete-box");
 const searchIconBox = document.getElementById("search-icon-container");
+const searchSection = document.getElementById("search-section");
 const analysisModal = document.getElementById("analysis-modal");
 const homeSpan = document.getElementById("median-home");
 const rentSpan = document.getElementById("median-rent");
@@ -15,14 +16,20 @@ for (let city of cityLinks) city.addEventListener("click", sendCall);
 
 // Code for the autocomplete box and its functionality (which cities to show, etc)
 locationTextBox.addEventListener("click", () => {
-    autocompleteBox.style.height = "150px";
+    autocompleteBox.style.height = "auto";
+    autocompleteBox.style.maxHeight = "125px";
     locationTextBox.style.borderRadius = "5px 5px 0px 0px";
     searchIconBox.style.borderRadius = "5px 0px 0px 0px";
+    searchSection.style.boxShadow = "0px 2px 4px 0px #00000040";
+    autocompleteBox.style.boxShadow = "0px 2px 4px 0px #00000040";
 });
 locationTextBox.addEventListener("blur", () => {
     autocompleteBox.style.height = "";
     locationTextBox.style.borderRadius = "0px 5px 5px 0px";
     searchIconBox.style.borderRadius = "5px 0px 0px 5px";
+    searchIconBox.style.borderRadius = "5px 0px 0px 0px";
+    searchSection.style.boxShadow = "";
+    autocompleteBox.style.boxShadow = "";
 });
 locationTextBox.addEventListener("keyup", (e) => {
     // Empty the div whenever something new is entered
@@ -44,6 +51,8 @@ locationTextBox.addEventListener("keyup", (e) => {
 
 // When a city link is pressed, call the API using info from the element, then create the result and display the modal
 async function sendCall(e) {
+    // Close the analysis modal if already open
+    if (analysisModal.style.height == "65%") openCloseModal();
     showLoading();
     locationTextBox.value = e.target.innerText;
     let cityProvince = e.target.innerText.split(", ");
@@ -68,10 +77,10 @@ document
     .addEventListener("click", openCloseModal);
 
 function openCloseModal() {
-    if (analysisModal.style.height == "70%") {
+    if (analysisModal.style.height == "65%") {
         analysisModal.style.height = "0%";
     } else {
-        analysisModal.style.height = "70%";
+        analysisModal.style.height = "65%";
     }
 }
 

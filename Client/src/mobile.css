@@ -1,43 +1,52 @@
 @media only screen and (max-width: 1300px) {
     #content img {
-        width:30%;
+        width: 30%;
     }
-
 }
 
 @media only screen and (max-width: 950px) {
     #content img {
-        width:35%;
+        width: 40%;
     }
 
     #nav-container {
-        width:80vw;
+        width: 80vw;
     }
 
     #cities-section {
-        width:80vw;
+        width: 80vw;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-flow: initial;
     }
 
     #content hr {
-        width:80vw;
+        width: 80vw;
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
     #content img {
-        width:70%;
+        width: 70%;
+    }
+
+    #cities-section {
+        grid-template-columns: 1fr 1fr;
     }
 
     #prices-row {
         margin: 0px 15px;
-        margin-bottom:35px;
+        margin-bottom: 35px;
     }
 
     #prices-row > div:nth-of-type(2) {
-        color:transparent;
+        color: transparent;
     }
 
     #decision-area p {
         margin: 0px 15px;
+    }
+
+    footer {
+        min-height: 80px;
     }
 }

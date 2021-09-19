@@ -41,11 +41,7 @@ nav {
 
 nav li {
     list-style: none;
-    display:inline-block;
-}
-
-nav li:first-of-type {
-    margin-right:50px;
+    display: inline-block;
 }
 
 nav a {
@@ -54,7 +50,7 @@ nav a {
 }
 
 nav a:hover {
-    color:white;
+    color: white;
 }
 
 #nav-container {
@@ -69,7 +65,8 @@ nav a:hover {
 #site-title {
     font-family: Coda, sans-serif;
     font-size: 17px;
-    cursor:default;
+    cursor: default;
+    text-shadow: 1px 1px #9090ca;
 }
 
 #content {
@@ -83,7 +80,7 @@ nav a:hover {
 
 #content img {
     width: 25%;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 
 #search-section {
@@ -113,7 +110,7 @@ nav a:hover {
 }
 
 #autocomplete-container {
-    height: 150px;
+    height: 75px;
 }
 
 #autocomplete-box {
@@ -130,6 +127,7 @@ nav a:hover {
     overflow: auto;
     scrollbar-color: #ceced5 #f2f2f8;
     scrollbar-width: thin;
+    max-height: 135px;
 }
 
 #autocomplete-box a {
@@ -179,11 +177,11 @@ footer {
     justify-content: center;
     align-items: center;
     color: #cacad2;
-    text-align:center;
+    text-align: center;
 }
 
 footer p {
-    max-width:90%;
+    max-width: 90%;
 }
 
 footer a {
@@ -261,21 +259,21 @@ footer a:hover {
 
 #loading-container {
     position: relative;
-    top: -85px;
+    top: -48px;
     height: 0px;
 }
 
 #loading-icon {
-    color:#7c7c88;
+    color: #7c7c88;
     animation: spin 1s infinite linear;
     display: none;
 }
 
 @keyframes spin {
     from {
-        transform: rotate(0deg)
+        transform: rotate(0deg);
     }
     to {
-        transform:rotate(360deg);
+        transform: rotate(360deg);
     }
 }
