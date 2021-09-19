@@ -46,7 +46,7 @@ async function sendCall(e) {
     locationTextBox.value = e.target.innerText;
     let cityProvince = e.target.innerText.split(", ");
     let provinceString = cityProvince[1].toLowerCase();
-    let cityString = cityProvince[0].toLowerCase();
+    let cityString = cityProvince[0].toLowerCase().replace(" ", "-");
     response = await axios.get(
         `https://house-ca.herokuapp.com/${cityString}/${provinceString}`
     );
@@ -78,7 +78,7 @@ function fillModal() {
     let decisionObject = getDecision();
     rentBuyLevelSpan.innerText = decisionObject.level;
     rentBuySpan.innerText = decisionObject.decision;
-    locationSpan.innerText = `${city}, ${province.toUpperCase()}`;
+    locationSpan.innerText = `${city.replace("-", " ")}, ${province.toUpperCase()}`;
 }
 
 // Calculates the buy/rent decision based on the ratio
