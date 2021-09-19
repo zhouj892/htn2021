@@ -1,0 +1,30 @@
+@media only screen and (max-width: 1300px) {
+    #content img {
+        width:30%;
+    }
+
+}
+
+@media only screen and (max-width: 950px) {
+    #content img {
+        width:35%;
+    }
+
+    #nav-container {
+        width:80vw;
+    }
+
+    #cities-section {
+        width:80vw;
+    }
+
+    #content hr {
+        width:80vw;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #content img {
+        width:70%;
+    }
+}

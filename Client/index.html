@@ -12,15 +12,17 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="src/styles.css" />
+        <link rel="stylesheet" href="src/mobile.css" />
     </head>
     <body>
         <nav>
             <div id="nav-container">
                 <div>
-                    <p>Price : Rent</p>
+                    <p id="site-title">Price : Rent</p>
                 </div>
                 <ul>
                     <li><a href="#" title="Work in progress!">About</a></li>
+                    <li><a href="https://github.com/zhouj892/htn2021" target="_blank">Code</a></li>
                 </ul>
             </div>
         </nav>
@@ -38,13 +40,14 @@
                         <p>:</p>
                     </div>
                     <div>
-                        <p>Median Rent Price</p>
+                        <p>Median Annual Rent</p>
                         <span class="value" id="median-rent">$0,000</span>
                     </div>
                 </div>
                 <div id="decision-area">
                     <p>
-                        Based on current data, it is <span id="rent-buy-level">much</span> better to
+                        Based on current data, it is
+                        <span id="rent-buy-level">much</span> better to
                         <span id="rent-buy">RENT</span> in
                         <span id="city-province">Toronto, ON</span>.
                     </p>
