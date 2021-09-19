@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hack the North</title>
+        <title>Price : Rent</title>
         <link
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -24,6 +24,29 @@
                 </ul>
             </div>
         </nav>
+        <div id="analysis-modal">
+            <div>
+                <i class="fas fa-times fa-2x" id="modal-open-close-btn"></i>
+            </div>
+            <div id="results">
+                <div id="prices-row">
+                    <div>
+                        <p>Median Home Price</p>
+                        <span class="value" id="median-home">$000,000</span>
+                    </div>
+                    <div>
+                        <p>:</p>
+                    </div>
+                    <div>
+                        <p>Median Rent Price</p>
+                        <span class="value" id="median-rent">$0,000</span>
+                    </div>
+                </div>
+                <div id="decision-area">
+                    <p>Based on current data, it is better <span id="rent-buy">RENT</span> in <span id="city-province">Toronto, ON</span>.</p>
+                </div>
+            </div>
+        </div>
         <div id="content">
             <img src="src/images/main-page-img.svg" />
             <div id="search-section">
@@ -48,7 +71,7 @@
                 <a href="#" target="_blank">Edmonton</a>
                 <a href="#" target="_blank">Ottawa</a>
                 <a href="#" target="_blank">Winnipeg</a>
-                <a href="#" target="_blank">Quebec City</a>
+                <a href="#" target="_blank">Waterloo</a>
                 <a href="#" target="_blank">Hamilton</a>
                 <a href="#" target="_blank">Kitchener</a>
                 <a href="#" target="_blank">London</a>

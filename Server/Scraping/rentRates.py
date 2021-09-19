@@ -22,6 +22,8 @@ def getRate(cityId: int):
     for listing in allListings:
         maxRate = int(listing["maxRate"])
         minRate = int(listing["minRate"])
+        if maxRate == 0:
+            continue
         if maxRate == minRate:
             rates.append(maxRate)
         else:

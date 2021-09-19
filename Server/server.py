@@ -1,11 +1,19 @@
 from fastapi import FastAPI, Response
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 from statistics import median
-from Scraping.buyRates import RealtorPrice
+from Scraping.buyRates import RewPrice
 from Scraping.rentRates import RentcanadaPrice
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.mount("/static", StaticFiles(directory="../Client"), name="static")
 
@@ -15,8 +23,8 @@ def read_root():
 
 @app.get("/{city}/{province}")
 def read_location(city: str, province: str):
-    median_price = median(RealtorPrice(city, province))
-    median_rent = median(RentcanadaPrice(city, province))
+    median_price = median(RewPrice(city, province))
+    median_rent = median(RentcanadaPrice(city, province)) * 12
     ratio = median_price/median_rent
     result = {
         "Province": province.title(),
