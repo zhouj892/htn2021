@@ -10,6 +10,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scrollbar-color: #828993 var(--accent);
+}
+
 body {
     background: linear-gradient(180deg, #fafaff 0%, #ffffff 100%);
     background-repeat: no-repeat;
@@ -135,6 +139,7 @@ nav a:hover {
     font-size: 14px;
     color: grey;
     text-decoration: none;
+    cursor:pointer;
 }
 
 #autocomplete-box a:hover {
