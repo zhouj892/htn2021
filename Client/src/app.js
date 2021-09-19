@@ -21,7 +21,16 @@ locationTextBox.addEventListener('keyup', (e) => {
         if (city.toLowerCase().includes(locationTextBox.value.toLowerCase()) && locationTextBox.value != ""){
             let cityLink = document.createElement("a");
             cityLink.innerText = city;
+            cityLink.addEventListener('click', sendCall)
             autocompleteBox.append(cityLink);
         }
     }
 })
+
+async function sendCall(e) {
+    let cityProvince = e.target.innerText.split(", ");
+    let city = cityProvince[0].toLowerCase();
+    let province = cityProvince[1].toLowerCase();
+    let response = await axios.get(`https://crossorigin.me/https://house-ca.herokuapp.com/${city}/${province}`)
+    console.log(response)
+}
