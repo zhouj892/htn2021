@@ -4,45 +4,52 @@ const searchIconBox = document.getElementById("search-icon-container");
 const analysisModal = document.getElementById("analysis-modal");
 const homeSpan = document.getElementById("median-home");
 const rentSpan = document.getElementById("median-rent");
+const rentBuyLevelSpan = document.getElementById("rent-buy-level")
 const rentBuySpan = document.getElementById("rent-buy");
 const locationSpan = document.getElementById("city-province");
 let response, province, city, medianHomePrice, medianRentPrice, priceRentRatio;
 
 const cityLinks = document.getElementsByClassName("city");
-for (let city of cityLinks)
-    city.addEventListener('click', sendCall)
+for (let city of cityLinks) city.addEventListener("click", sendCall);
 
 // Code for the autocomplete box and its functionality (which cities to show, etc)
-locationTextBox.addEventListener('click', () => {
+locationTextBox.addEventListener("click", () => {
     autocompleteBox.style.height = "150px";
     locationTextBox.style.borderRadius = "5px 5px 0px 0px";
     searchIconBox.style.borderRadius = "5px 0px 0px 0px";
-})
-locationTextBox.addEventListener('blur', () => {
+});
+locationTextBox.addEventListener("blur", () => {
     autocompleteBox.style.height = "";
     locationTextBox.style.borderRadius = "0px 5px 5px 0px";
     searchIconBox.style.borderRadius = "5px 0px 0px 5px";
-})
-locationTextBox.addEventListener('keyup', (e) => {
+});
+locationTextBox.addEventListener("keyup", (e) => {
+    // Empty the div whenever something new is entered
     while (autocompleteBox.firstChild) {
-        autocompleteBox.removeChild(autocompleteBox.lastChild)
+        autocompleteBox.removeChild(autocompleteBox.lastChild);
     }
     for (let city of cities) {
-        if (city.toLowerCase().includes(locationTextBox.value.toLowerCase()) && locationTextBox.value != ""){
+        if (
+            city.toLowerCase().includes(locationTextBox.value.toLowerCase()) &&
+            locationTextBox.value != ""
+        ) {
             let cityLink = document.createElement("a");
             cityLink.innerText = city;
-            cityLink.addEventListener('click', sendCall)
+            cityLink.addEventListener("click", sendCall);
             autocompleteBox.append(cityLink);
         }
     }
-})
+});
 
 // When a city link is pressed, call the API using info from the element, then create the result and display the modal
 async function sendCall(e) {
+    locationTextBox.value = e.target.innerText;
     let cityProvince = e.target.innerText.split(", ");
     let provinceString = cityProvince[1].toLowerCase();
     let cityString = cityProvince[0].toLowerCase();
-    response = await axios.get(`https://house-ca.herokuapp.com/${cityString}/${provinceString}`)
+    response = await axios.get(
+        `https://house-ca.herokuapp.com/${cityString}/${provinceString}`
+    );
     province = response.data["Province"];
     city = response.data["City"];
     medianHomePrice = response.data["Median Home Price"];
@@ -52,7 +59,9 @@ async function sendCall(e) {
     openCloseModal();
 }
 
-document.getElementById("modal-open-close-btn").addEventListener('click', openCloseModal)
+document
+    .getElementById("modal-open-close-btn")
+    .addEventListener("click", openCloseModal);
 
 function openCloseModal() {
     if (analysisModal.style.height == "80%") {
@@ -66,11 +75,17 @@ function openCloseModal() {
 function fillModal() {
     homeSpan.innerText = `$${medianHomePrice}`;
     rentSpan.innerText = `$${medianRentPrice}`;
-    rentBuySpan.innerText = getDecision();
-    locationSpan.innerText = `${city}, ${province.toUpperCase()}`
+    let decisionObject = getDecision();
+    rentBuyLevelSpan.innerText = decisionObject.level;
+    rentBuySpan.innerText = decisionObject.decision;
+    locationSpan.innerText = `${city}, ${province.toUpperCase()}`;
 }
 
 // Calculates the buy/rent decision based on the ratio
 function getDecision() {
-    //TODO
+    if (priceRentRatio < 16)
+        return {decision: "BUY", level: "much"}
+    else if (priceRentRatio < 21)
+        return {decision: "RENT", level: "typically"}
+    else return {decision: "RENT", level: "much"}
 }

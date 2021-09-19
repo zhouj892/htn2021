@@ -222,3 +222,8 @@ footer a:hover {
     font-size: 32px;
     color: var(--accent);
 }
+
+#rent-buy {
+    font-size: 17px;
+    font-weight: bold;
+}
