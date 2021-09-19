@@ -64,10 +64,10 @@ document
     .addEventListener("click", openCloseModal);
 
 function openCloseModal() {
-    if (analysisModal.style.height == "80%") {
+    if (analysisModal.style.height == "70%") {
         analysisModal.style.height = "0%";
     } else {
-        analysisModal.style.height = "80%";
+        analysisModal.style.height = "70%";
     }
 }
 

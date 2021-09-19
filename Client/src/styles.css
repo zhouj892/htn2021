@@ -122,11 +122,13 @@ nav a:hover {
     width: 226px;
     background-color: #f2f2f8;
     border-radius: 0px 0px 5px 5px;
-    overflow: hidden;
     transition: height 0.2s;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    overflow: auto;
+    scrollbar-color: #ceced5 #f2f2f8;
+    scrollbar-width: thin;
 }
 
 #autocomplete-box a {
@@ -177,6 +179,10 @@ footer {
     align-items: center;
     color: #cacad2;
     text-align:center;
+}
+
+footer p {
+    max-width:90%;
 }
 
 footer a {
