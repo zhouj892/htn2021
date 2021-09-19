@@ -1,15 +1,17 @@
 from fastapi import FastAPI, Response
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
 from statistics import median
-from Scraping.realtorRates import RealtorPrice
-from Scraping.rentCanadaRates import RentcanadaPrice
+from Scraping.buyRates import RealtorPrice
+from Scraping.rentRates import RentcanadaPrice
 
 app = FastAPI()
 
+app.mount("/static", StaticFiles(directory="../Client"), name="static")
 
 @app.get("/")
 def read_root():
-    return Response("Housing Purchasing vs Renting Comparison API")
-
+    return RedirectResponse(url='/static/index.html')
 
 @app.get("/{city}/{province}")
 def read_location(city: str, province: str):

@@ -3,12 +3,11 @@ from bs4 import BeautifulSoup
 from re import sub
 from decimal import Decimal
 
-def getRates(city, province):
+def RealtorPrice(city, province):
   URL = "https://www.rew.ca/properties/areas/" + city + "-" + province
   page = requests.get(URL)
   soup = BeautifulSoup(page.content, "html.parser")
   
-
   body = soup.find("body")
   listings = body.find_all('article', {'data-listing-link': True})
   rates = []
