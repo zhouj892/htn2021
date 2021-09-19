@@ -14,8 +14,8 @@ def read_root():
 @app.get("/{city}/{province}")
 def read_location(city: str, province: str):
     median_price = median(RewPrice(city, province))
-    median_rent = median(RentcanadaPrice(city, province))
-    ratio = median_price/(median_rent * 12)
+    median_rent = median(RentcanadaPrice(city, province)) * 12
+    ratio = median_price/median_rent
     result = {
         "Province": province.title(),
         "City": city.title(),
