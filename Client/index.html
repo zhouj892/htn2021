@@ -58,20 +58,23 @@
             <img src="src/images/main-page-img.svg" />
             <div id="search-section">
                 <div id="search-icon-container">
-                    <i class="fas fa-search"></i>
+                    <i id="search-icon" class="fas fa-search"></i>
+                    <i id="loading-icon" class="fas fa-circle-notch"></i>
                 </div>
                 <input
                     type="text"
                     id="location-textbox"
                     placeholder="Enter a location..."
+                    autofocus
                 />
             </div>
             <div id="autocomplete-container">
                 <div id="autocomplete-box"></div>
             </div>
-            <div id="loading-container">
+            <!-- <div id="loading-container">
                 <i id="loading-icon" class="fas fa-circle-notch fa-3x"></i>
-            </div>
+            </div> -->
+            <h2>Popular Cities</h2>
             <hr />
             <div id="cities-section">
                 <a class="city">Toronto, ON</a>

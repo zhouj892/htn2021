@@ -8,6 +8,7 @@ const rentSpan = document.getElementById("median-rent");
 const rentBuyLevelSpan = document.getElementById("rent-buy-level");
 const rentBuySpan = document.getElementById("rent-buy");
 const locationSpan = document.getElementById("city-province");
+const searchIcon = document.getElementById("search-icon");
 const loadingIcon = document.getElementById("loading-icon");
 let response, province, city, medianHomePrice, medianRentPrice, priceRentRatio;
 
@@ -27,7 +28,6 @@ locationTextBox.addEventListener("blur", () => {
     autocompleteBox.style.height = "";
     locationTextBox.style.borderRadius = "0px 5px 5px 0px";
     searchIconBox.style.borderRadius = "5px 0px 0px 5px";
-    searchIconBox.style.borderRadius = "5px 0px 0px 0px";
     searchSection.style.boxShadow = "";
     autocompleteBox.style.boxShadow = "";
 });
@@ -69,6 +69,7 @@ async function sendCall(e) {
     fillModal();
     // Stops the loading function if still running
     loadingIcon.style.display = "none";
+    searchIcon.style.display = "block";
     openCloseModal();
 }
 
@@ -106,8 +107,10 @@ function getDecision() {
 }
 
 function showLoading() {
+    searchIcon.style.display = "none";
     loadingIcon.style.display = "block";
     setTimeout(() => {
         loadingIcon.style.display = "none";
-    }, 10000);
+        searchIcon.style.display = "block";
+    }, 15000);
 }
