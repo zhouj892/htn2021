@@ -86,8 +86,8 @@ nav a:hover {
 #content img {
     width: 25%;
     margin-bottom: 50px;
-    filter: brightness(107%);
-    opacity:0.96;
+    filter: brightness(110%);
+    opacity: 0.9;
 }
 
 #search-section {
