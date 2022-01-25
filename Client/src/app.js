@@ -11,6 +11,7 @@ const locationSpan = document.getElementById("city-province");
 const searchIcon = document.getElementById("search-icon");
 const loadingIcon = document.getElementById("loading-icon");
 let response, province, city, medianHomePrice, medianRentPrice, priceRentRatio;
+let serverDown = false;
 
 const cityLinks = document.getElementsByClassName("city");
 for (let city of cityLinks) city.addEventListener("click", sendCall);
@@ -58,9 +59,25 @@ async function sendCall(e) {
     let cityProvince = e.target.innerText.split(", ");
     let provinceString = cityProvince[1].toLowerCase();
     let cityString = cityProvince[0].toLowerCase().replace(" ", "-");
-    response = await axios.get(
-        `https://house-ca.herokuapp.com/${cityString}/${provinceString}`
-    );
+
+    try {
+        response = await axios.get(
+            `https://house-ca.herokuapp.com/${cityString}/${provinceString}`
+        );
+    } catch (error) {
+        // If the server is down, use sample values
+        response = {
+            data: {
+                Province: cityProvince[1],
+                City: cityProvince[0],
+                "Median Home Price": "861,695",
+                "Median Rent Price": "17,400",
+                "Price Rent Ratio": "49.5",
+            },
+        };
+        serverDown = true;
+    }
+
     province = response.data["Province"];
     city = response.data["City"];
     medianHomePrice = response.data["Median Home Price"];
@@ -92,6 +109,8 @@ function fillModal() {
     let decisionObject = getDecision();
     rentBuyLevelSpan.innerText = decisionObject.level;
     rentBuySpan.innerText = decisionObject.decision;
+    if (serverDown)
+        document.getElementById("decision-area").innerHTML += `<br><p class="error">(Our server is down, so you've been given sample data)<p>`;
     locationSpan.innerText = `${city.replace(
         "-",
         " "

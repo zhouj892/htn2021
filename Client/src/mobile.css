@@ -33,6 +33,10 @@
         grid-template-columns: 1fr 1fr;
     }
 
+    #analysis-modal {
+        background: linear-gradient( 180deg, #a8a0b9 0%, rgba(242, 242, 248, 0.86) 54.69%, rgba(242, 242, 248, 0.75) 92.19% );
+    }
+
     #prices-row {
         margin: 0px 15px;
         margin-bottom: 35px;
@@ -40,6 +44,10 @@
 
     #prices-row > div:nth-of-type(2) {
         color: transparent;
+    }
+
+    .prices {
+        font-size:26px;
     }
 
     #decision-area p {

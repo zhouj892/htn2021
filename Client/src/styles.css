@@ -280,13 +280,21 @@ footer a:hover {
 }
 
 .value {
-    font-size: 32px;
+    font-size: 42px;
     color: var(--accent);
+}
+
+.ratio {
+    transform: translateY(5px);
 }
 
 #rent-buy {
     font-size: 17px;
     font-weight: bold;
+}
+
+.error {
+    font-size: 12px;
 }
 
 #loading-container {
