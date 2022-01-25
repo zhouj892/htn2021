@@ -110,7 +110,7 @@ function fillModal() {
     rentBuyLevelSpan.innerText = decisionObject.level;
     rentBuySpan.innerText = decisionObject.decision;
     if (serverDown)
-        document.getElementById("decision-area").innerHTML += `<br><p class="error">(Our server is down, so you've been given sample data)<p>`;
+        document.querySelector(".error").innerText = "(Our server is down, so you've been given sample data)";
     locationSpan.innerText = `${city.replace(
         "-",
         " "
